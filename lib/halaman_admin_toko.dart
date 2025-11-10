@@ -177,11 +177,7 @@ class _HalamanAdminTokoState extends State<HalamanAdminToko> {
                           ? Image.file(
                               File(_pathLogoToko!),
                               fit: BoxFit.contain,
-                              // --- PERBAIKAN: Tambahkan Key unik ---
-                              // Ini memaksa Flutter memuat ulang gambar
-                              // saat path-nya berubah (setelah simpan)
                               key: ValueKey(_pathLogoToko),
-                              // --- AKHIR PERBAIKAN ---
                               errorBuilder: (c, e, s) => const Center(
                                 child: Text('Gagal memuat logo lama'),
                               ),
@@ -228,3 +224,4 @@ class _HalamanAdminTokoState extends State<HalamanAdminToko> {
     );
   }
 }
+
