@@ -26,7 +26,6 @@ Aplikasi ini cocok digunakan untuk toko kecil, kafe, atau usaha retail yang memb
 - **Flutter** (Front-end Framework)  
 - **Dart** (Bahasa Pemrograman)  
 - **Firebase / SQLite** (opsional, tergantung implementasi penyimpanan)  
-- **State Management:** `setState`, Provider, atau GetX (sesuaikan dengan proyekmu)  
 - **UI Library:** Material Design
 
 ---
