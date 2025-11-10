@@ -94,12 +94,11 @@ lib/
 
 ## ⚡ Cara Menjalankan
 
-1. Clone repositori ini:
-2. Masuk ke folder project:
+1. Masuk ke folder project:
 cd aplikasi_kasir
-3. Jalankan perintah untuk mendapatkan dependency:
+2. Jalankan perintah untuk mendapatkan dependency:
 flutter pub get
-4. Jalankan aplikasi:
+3. Jalankan aplikasi:
 flutter run
 
 🧑‍💻 Login
