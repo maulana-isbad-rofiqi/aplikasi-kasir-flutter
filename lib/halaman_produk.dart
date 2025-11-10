@@ -5,7 +5,7 @@ import 'auth_service.dart';
 import 'models.dart';
 import 'halaman_admin_utama.dart';
 import 'halaman_keranjang.dart';
-import 'package:intl/intl.dart'; // <-- Pastikan ini ada
+import 'package:intl/intl.dart';
 
 class HalamanProduk extends StatefulWidget {
   const HalamanProduk({super.key});
@@ -17,11 +17,9 @@ class HalamanProduk extends StatefulWidget {
 class _HalamanProdukState extends State<HalamanProduk> {
   final Box<Produk> _produkBox = Hive.box<Produk>('produkBox');
   final Box<KeranjangItem> _keranjangBox = Hive.box<KeranjangItem>('keranjangBox');
-  final Box<String> _pengaturanBox = Hive.box<String>('pengaturanBox'); // <-- Box untuk logo/nama
+  final Box<String> _pengaturanBox = Hive.box<String>('pengaturanBox');
   final AuthService _authService = AuthService();
 
-  // ... (Fungsi _tambahKeKeranjang, _hitungTotalItem, _tampilkanDetailPopup, _tampilkanDialogLogout tetap SAMA) ...
-  // --- (Tidak ada perubahan pada fungsi-fungsi ini, sudah benar) ---
   void _tambahKeKeranjang(Produk produk, int produkKey) {
     if (produk.stok <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -76,7 +74,6 @@ class _HalamanProdukState extends State<HalamanProduk> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
-        // --- PERBAIKAN: Format angka untuk popup ---
         final formatAngka = NumberFormat.decimalPattern('id_ID');
 
         return StatefulBuilder(
@@ -121,7 +118,6 @@ class _HalamanProdukState extends State<HalamanProduk> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            // --- PERBAIKAN: Gunakan formatAngka ---
                             'Rp ${formatAngka.format(produkRealtime.harga)}', 
                             style: TextStyle(
                               fontSize: 24,
@@ -255,12 +251,10 @@ class _HalamanProdukState extends State<HalamanProduk> {
 
   @override
   Widget build(BuildContext context) {
-    // --- PERBAIKAN: Buat formatter di sini untuk GridView ---
     final formatAngka = NumberFormat.decimalPattern('id_ID');
 
     return Scaffold(
       appBar: AppBar(
-        // --- PERBAIKAN: Logo dan Nama Toko ---
         title: ValueListenableBuilder<Box<String>>(
           valueListenable: _pengaturanBox.listenable(),
           builder: (context, box, _) {
@@ -276,15 +270,11 @@ class _HalamanProdukState extends State<HalamanProduk> {
                       borderRadius: BorderRadius.circular(4.0),
                       child: Image.file(
                         File(pathLogo),
-                        // --- PERBAIKAN: Tambahkan Key unik ---
-                        // Ini memaksa Flutter memuat ulang gambar
-                        // dan membantu mencegah crash dari file corrupt
                         key: ValueKey(pathLogo), 
                         height: 32, 
                         width: 32,
                         fit: BoxFit.cover,
                         errorBuilder: (c, e, s) {
-                          // Jika crash terjadi, print error-nya
                           print("Error memuat gambar logo: $e");
                           return const Icon(
                             Icons.storefront,
@@ -304,7 +294,6 @@ class _HalamanProdukState extends State<HalamanProduk> {
             icon: const Icon(Icons.admin_panel_settings_outlined),
             tooltip: 'Mode Admin',
             onPressed: () async {
-              // --- PERBAIKAN: Gunakan 'await' agar UI di-refresh setelah admin ditutup ---
               await Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => const HalamanAdminUtama(),
@@ -380,8 +369,7 @@ class _HalamanProdukState extends State<HalamanProduk> {
               crossAxisCount: 2,
               crossAxisSpacing: 16.0,
               mainAxisSpacing: 16.0,
-              // --- PERBAIKAN: Sesuaikan rasio agar teks muat ---
-              childAspectRatio: 0.75, // Diberi lebih banyak ruang vertikal
+              childAspectRatio: 0.75,
             ),
             itemCount: box.values.length,
             itemBuilder: (context, index) {
@@ -391,7 +379,6 @@ class _HalamanProdukState extends State<HalamanProduk> {
               if (produk == null) {
                 return const Card(child: Text('Data produk error'));
               }
-              // --- PERBAIKAN: Kirim formatter ke _buildProductCard ---
               return _buildProductCard(produk, produkKey, formatAngka);
             },
           );
@@ -400,7 +387,6 @@ class _HalamanProdukState extends State<HalamanProduk> {
     );
   }
 
-  // --- Widget _buildProductCard (Dengan Perbaikan Layout & Format) ---
   Widget _buildProductCard(Produk produk, int produkKey, NumberFormat formatAngka) {
     final bool stokHabis = produk.stok <= 0;
     
@@ -416,10 +402,8 @@ class _HalamanProdukState extends State<HalamanProduk> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // --- PERBAIKAN: Layout diubah ke Expanded + Padding ---
-            // 1. Gambar (mengambil ruang fleksibel)
             Expanded(
-              flex: 3, // Beri 3 bagian ruang untuk gambar
+              flex: 3,
               child: Hero( 
                 tag: 'produk-$produkKey',
                 child: Stack(
@@ -451,16 +435,14 @@ class _HalamanProdukState extends State<HalamanProduk> {
                 ),
               ),
             ),
-            // 2. Teks (mengambil sisa ruang)
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min, // Penting agar tidak overflow
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Hapus Flexible dan Spacer
                   Text(
-                    produk.nama, // <-- INI NAMA PRODUK
+                    produk.nama,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -478,7 +460,7 @@ class _HalamanProdukState extends State<HalamanProduk> {
                   ),
                   const SizedBox(height: 8), 
                   Text(
-                    'Rp ${formatAngka.format(produk.harga)}', // <-- INI HARGA
+                    'Rp ${formatAngka.format(produk.harga)}',
                     style: TextStyle(
                       fontSize: 15,
                       color: Theme.of(context).colorScheme.primary,
@@ -488,10 +470,10 @@ class _HalamanProdukState extends State<HalamanProduk> {
                 ],
               ),
             ),
-            // --- AKHIR PERBAIKAN LAYOUT ---
           ],
         ),
       ),
     );
   }
+
 }
