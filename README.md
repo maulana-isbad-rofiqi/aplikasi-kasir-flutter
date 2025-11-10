@@ -8,16 +8,25 @@ Aplikasi ini cocok digunakan untuk toko kecil, kafe, atau usaha retail yang memb
 ## 🚀 Fitur Utama
 
 - 🔐 **Login Admin**
+  - Akses aman untuk pemilik atau karyawan toko.
 - 🛍️ **Kelola Produk**
-  - Tambah, edit, hapus, dan atur stok produk.
+  - Tambah, edit, hapus, dan atur stok produk secara dinamis.
 - 💸 **Kelola Pembayaran**
-  - Pilihan metode pembayaran: CASH, DANA, dan QRIS.
+  - Pilihan metode pembayaran: **CASH**, **DANA**, dan **QRIS**.
+- 🧾 **Cetak Struk Otomatis**
+  - Setelah transaksi selesai, aplikasi dapat **mencetak struk secara otomatis** berisi:
+    - Nama toko dan logo.
+    - Daftar produk yang dibeli.
+    - Jumlah, harga per item, dan total keseluruhan.
+    - Metode pembayaran yang digunakan.
+    - Tanggal & waktu transaksi.
 - 📦 **Riwayat Stok**
-  - Menampilkan histori penambahan stok barang.
+  - Menampilkan histori setiap penambahan atau pengurangan stok barang.
 - 🧾 **Riwayat Transaksi**
-  - Melihat struk/nota dari setiap penjualan yang dilakukan.
+  - Melihat seluruh riwayat transaksi dan total penjualan.
 - ⚙️ **Pengaturan Toko**
-  - Ubah nama toko dan logo sesuai kebutuhan.
+  - Ubah nama toko, logo, serta informasi tambahan seperti alamat dan kontak toko.
+
 
 ---
 
