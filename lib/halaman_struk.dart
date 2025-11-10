@@ -33,10 +33,7 @@ class HalamanStruk extends StatelessWidget {
       }
     }
 
-    // --- PERBAIKAN: Gunakan formatAngka (10.000) bukan formatCurrency (Rp 10.000) ---
-    // Ini agar kita bisa fleksibel menambahkan "Rp" atau "@"
     final formatAngka = NumberFormat.decimalPattern('id_ID');
-    // --- AKHIR PERBAIKAN ---
 
     doc.addPage(
       pw.Page(
@@ -115,7 +112,6 @@ class HalamanStruk extends StatelessWidget {
                             child: pw.Text(
                                 formatAngka.format(item.jumlah * item.harga),
                                 textAlign: pw.TextAlign.right)),
-                        // --- AKHIR PERBAIKAN ---
                       ],
                     ));
               }),
@@ -127,7 +123,6 @@ class HalamanStruk extends StatelessWidget {
                       style: pw.TextStyle(
                           fontWeight: pw.FontWeight.bold, fontSize: 16)),
                   pw.Text(
-                    // --- PERBAIKAN: Gunakan formatAngka ---
                     'Rp ${formatAngka.format(transaksi.totalHarga)}',
                     style: pw.TextStyle(
                         fontWeight: pw.FontWeight.bold, fontSize: 16),
@@ -152,7 +147,6 @@ class HalamanStruk extends StatelessWidget {
                   mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                   children: [
                     pw.Text('Uang Tunai:'),
-                    // --- PERBAIKAN: Gunakan formatAngka ---
                     pw.Text('Rp ${formatAngka.format(transaksi.uangBayar!)}'),
                   ],
                 ),
@@ -161,7 +155,6 @@ class HalamanStruk extends StatelessWidget {
                   mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                   children: [
                     pw.Text('Kembalian:'),
-                    // --- PERBAIKAN: Gunakan formatAngka ---
                     pw.Text('Rp ${formatAngka.format(transaksi.kembalian!)}'),
                   ],
                 ),
@@ -184,9 +177,7 @@ class HalamanStruk extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // --- PERBAIKAN: Buat formatter untuk tampilan layar ---
     final formatAngka = NumberFormat.decimalPattern('id_ID');
-    // --- AKHIR PERBAIKAN ---
 
     return Scaffold(
       appBar: AppBar(
@@ -194,7 +185,6 @@ class HalamanStruk extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.close),
           onPressed: () {
-            // Kembali ke halaman paling awal (halaman produk)
             Navigator.of(context).popUntil((route) => route.isFirst);
           },
         ),
@@ -222,9 +212,7 @@ class HalamanStruk extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                // --- PERBAIKAN: Gunakan formatAngka untuk tampilan layar ---
                 'Total: Rp ${formatAngka.format(transaksi.totalHarga)}',
-                // --- AKHIR PERBAIKAN ---
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: 40),
@@ -232,7 +220,6 @@ class HalamanStruk extends StatelessWidget {
                 icon: const Icon(Icons.print),
                 label: const Text('Cetak Struk'),
                 onPressed: () => Printing.layoutPdf(
-                  // Gunakan format kertas struk 80mm
                   onLayout: (PdfPageFormat format) => _buatPdfStruk(),
                 ),
               ),
@@ -243,3 +230,4 @@ class HalamanStruk extends StatelessWidget {
     );
   }
 }
+
