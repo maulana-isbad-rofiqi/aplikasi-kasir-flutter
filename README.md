@@ -45,7 +45,7 @@ Berikut beberapa tampilan hasil aplikasi kasir ini (pastikan file gambar berada 
 
 ### 🛒 Halaman Produk  
 Menampilkan daftar produk yang tersedia beserta stok dan harga.  
-![Produk Tersedia](https://i.ibb.co/ABC123/nama-gambar.jpg)
+![Produk Tersedia](https://i.postimg.cc/KYdx7MCP/motion-photo-1620821510689416041.jpg)
 
 
 ---
