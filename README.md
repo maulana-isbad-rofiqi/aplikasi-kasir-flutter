@@ -52,19 +52,19 @@ Menampilkan daftar produk yang tersedia beserta stok dan harga.
 
 ### ⚙️ Menu Admin  
 Berisi pengaturan toko, kelola produk, pembayaran, dan riwayat transaksi.  
-![Menu Admin](./motion_photo_4047433430745450848.jpg)
+![Menu Admin](https://i.postimg.cc/TPcJgVKz/motion-photo-4047433430745450848.jpg)
 
 ---
 
 ### 💳 Halaman Checkout Pembayaran  
 Pilih metode pembayaran (Cash, DANA, QRIS) dan selesaikan transaksi.  
-![Checkout Pembayaran](./motion_photo_5956120407410530158.jpg)
+![Checkout Pembayaran](https://i.postimg.cc/mrdVK3TM/motion-photo-5956120407410530158.jpg)
 
 ---
 
 ### 🧾 Riwayat Stok dan Transaksi  
 Menampilkan histori stok dan penjualan.  
-![Riwayat Admin](./IMG-20251110-WA0012.jpg)
+![Riwayat Admin](https://i.postimg.cc/Fs2p4s59/IMG-20251110-WA0012.jpg)
 
 ---
 
