@@ -177,7 +177,7 @@ class _HalamanAdminProdukState extends State<HalamanAdminProduk> {
                       controller: _stokController,
                       decoration: const InputDecoration(labelText: 'Stok Awal'),
                       keyboardType: TextInputType.number,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Stok tetap angka bulat
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     ),
                     TextField(
                       controller: _deskripsiController,
@@ -379,4 +379,5 @@ class _HalamanAdminProdukState extends State<HalamanAdminProduk> {
       ),
     );
   }
+
 }
